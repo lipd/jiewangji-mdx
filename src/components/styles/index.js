@@ -1,0 +1,11 @@
+export const colors = {
+  black: '#090a0b',
+  white_normal: '#cfd0d0',
+  white_bright: '#ffffff',
+}
+
+export const fontFamily = {
+  yuanti: 'STYuanti-SC-Regular, YouYuan',
+  heiti: "'STHeiti', MicrosoftYaHei",
+  songti: 'STSongti-SC-Bold, SimSun',
+}
