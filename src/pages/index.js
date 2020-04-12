@@ -1,17 +1,23 @@
 import React from 'react'
 import Layout from '../components/layout'
-import usePosts from '../hooks/use-posts'
+import useNaoDong from '../hooks/use-naodong'
+import useColumns from '../hooks/use-columns'
 
 export default () => {
-  const posts = usePosts()
+  const posts = useNaoDong()
+  const columns = useColumns()
 
   return (
     <Layout>
-      <h1>Hello World!</h1>
-
+      <h1>专栏</h1>
+      {columns.map((column) => (
+        <pre>{JSON.stringify(column, null, 2)}</pre>
+      ))}
+      <h1>脑洞</h1>
       {posts.map((post) => (
         <pre>{JSON.stringify(post, null, 2)}</pre>
       ))}
+      }
     </Layout>
   )
 }
