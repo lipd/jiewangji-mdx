@@ -3,5 +3,16 @@ module.exports = {
     title: '结网集 - 临渊的博客',
     description: '这里有我学习的足迹与各种胡思乱想',
   },
-  plugins: ['gatsby-plugin-emotion', 'gatsby-plugin-react-helmet'],
+  plugins: [
+    'gatsby-plugin-emotion',
+    'gatsby-plugin-react-helmet',
+    {
+      resolve: 'gatsby-plugin-mdx',
+      options: {
+        defaultLayouts: {
+          default: require.resolve('./src/components/layout.js'),
+        },
+      },
+    },
+  ],
 }
