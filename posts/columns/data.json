@@ -1,8 +1,13 @@
 [
   {
-    "title": "使用 Serverless 从零搭建一个 Gatsby 博客",
+    "title": "从零搭建一个 Gatsby 博客",
     "intro": "通过博客项目了解 Gatsby 的技术细节，并使用腾讯云 Serverless 技术轻松部署。",
     "slug": "gatsby-blog"
+  },
+  {
+    "title": "Serverless 全栈项目（Next & Express）",
+    "intro": "使用 Next.js 与 Express 快速开发一个 Serverless 全栈项目。",
+    "slug": "next-express-fullstack"
   },
   {
     "title": "【翻译】Just JavaScript",

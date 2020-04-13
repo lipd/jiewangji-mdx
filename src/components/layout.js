@@ -16,6 +16,11 @@ const globalStyle = css`
       Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 16px;
   }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 `
 
 const Layout = ({ children }) => {
@@ -30,7 +35,13 @@ const Layout = ({ children }) => {
         <meta name="description" content={description} />
       </Helmet>
       <Header />
-      <main>{children}</main>
+      <main
+        css={css`
+          padding: 2rem calc((100% - 1000px) / 2);
+        `}
+      >
+        {children}
+      </main>
     </>
   )
 }

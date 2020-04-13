@@ -15,7 +15,7 @@ const headerStyle = css`
   justify-content: space-between;
   align-items: center;
   height: 64px;
-  padding: 0 calc((100vw - 1040px) / 2);
+  padding: 0 calc((100% - 1000px) / 2);
 
   nav {
     display: flex;
