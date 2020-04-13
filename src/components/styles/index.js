@@ -1,3 +1,5 @@
+import globalStyle from './global'
+
 export const colors = {
   black: '#090a0b',
   grey: '#f0f0f0',
@@ -10,3 +12,5 @@ export const fontFamily = {
   heiti: "'STHeiti', MicrosoftYaHei",
   songti: 'STSongti-SC-Bold, SimSun',
 }
+
+export const globalStyle = globalStyle
