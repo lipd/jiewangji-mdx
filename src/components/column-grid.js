@@ -22,7 +22,21 @@ const Col = styled('div')`
 `
 
 const articleStyle = css`
-  border: 1px solid ${colors.grey};
+  :hover {
+    box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12),
+      0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+
+    .container {
+      border-color: transparent;
+    }
+  }
+
+  .container {
+    padding: 1rem;
+    border: 1px solid ${colors.grey};
+    border-top: none;
+  }
+
   h2 {
     font-family: ${fontFamily.yuanti};
     font-weight: normal;
@@ -44,11 +58,7 @@ const ColumnPreview = ({ column }) => (
           background-color: #dfdfdf;
         `}
       />
-      <div
-        css={css`
-          padding: 1rem;
-        `}
-      >
+      <div className="container">
         <h2>{column.title}</h2>
         <p>{column.intro}</p>
       </div>

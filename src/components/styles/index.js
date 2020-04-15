@@ -13,4 +13,10 @@ export const fontFamily = {
   songti: 'STSongti-SC-Bold, SimSun',
 }
 
-export const globalStyle = globalStyle
+const styles = {
+  globalStyle,
+  colors,
+  fontFamily,
+}
+
+export default styles
