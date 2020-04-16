@@ -1,31 +1,12 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import styled from '@emotion/styled'
 import { Link } from 'gatsby'
-import { colors, fontFamily } from './styles'
-
-const Row = styled('section')`
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-`
-
-const Col = styled('div')`
-  margin-bottom: 20px;
-  flex: 0 0 100%;
-  @media (min-width: 480px) {
-    flex: 0 0 48%;
-  }
-  @media (min-width: 768px) {
-    flex: 0 0 32%;
-  }
-`
+import { colors, fontFamily, shadow } from './styles'
+import { Row, Col3 } from './grid'
 
 const articleStyle = css`
   :hover {
-    box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12),
-      0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
-
+    ${shadow}
     .container {
       border-color: transparent;
     }
@@ -45,7 +26,7 @@ const articleStyle = css`
   }
   p {
     font-size: 0.8rem;
-    color: #697b8c;
+    color: ${colors.light};
   }
 `
 
@@ -69,9 +50,9 @@ const ColumnPreview = ({ column }) => (
 const ColumnGrid = ({ columns }) => (
   <Row>
     {columns.map((column) => (
-      <Col>
+      <Col3>
         <ColumnPreview column={column} />
-      </Col>
+      </Col3>
     ))}
   </Row>
 )
