@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import Image from 'gatsby-image'
 import { css } from '@emotion/core'
 import { Row, Col4 } from './grid'
 import { fontFamily, colors } from './styles'
@@ -30,15 +31,10 @@ const articleStyle = css`
 const NaodongGrid = ({ posts }) => (
   <Row>
     {posts.map((post) => (
-      <Col4>
+      <Col4 key={post.slug}>
         <Link to={`post/${post.slug}`}>
           <article css={articleStyle}>
-            <div
-              css={css`
-                height: 150px;
-                background-color: #d4d4d4;
-              `}
-            />
+            <Image fluid={post.image.sharp.fluid} fadeIn />
             <h2>{post.title}</h2>
             <p>{post.excerpt}</p>
           </article>

@@ -8,12 +8,27 @@ const useColumns = () => {
           title
           intro
           slug
+          image {
+            src {
+              sharp: childImageSharp {
+                fluid {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
         }
       }
     }
   `)
 
-  return data.allDataJson.nodes
+  const columns = data.allDataJson.nodes
+  return columns.map((column) => ({
+    title: column.title,
+    intro: column.intro,
+    slug: column.slug,
+    image: column.image.src.sharp.fluid,
+  }))
 }
 
 export default useColumns

@@ -58,7 +58,7 @@ const NavIcon = ({ src, alt, to }) => (
 const Header = () => (
   <header css={headerStyle}>
     <nav>
-      <NavLink className="brand">
+      <NavLink className="brand" to="/">
         <img
           css={css`
             height: 38px;
