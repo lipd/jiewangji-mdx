@@ -8,18 +8,29 @@ import githubIcon from './assets/svg/github-white.svg'
 import wechatIcon from './assets/svg/wechat-white.svg'
 import zhihuIcon from './assets/svg/zhihu-white.svg'
 
-const headerStyle = css`
-  background-color: ${colors.black};
+const StyledHeader = styled('header')`
+  background-color: ${(props) => (props.home ? 'transparent' : colors.black)};
+  position: ${(props) => (props.home ? 'absolute' : 'relative')};
   font-family: ${fontFamily.yuanti};
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
   height: 64px;
-  padding: 0 calc((100% - 1000px) / 2);
+  padding: 0 40px;
 
   nav {
     display: flex;
     align-items: center;
+  }
+
+  .icons {
+    display: flex;
+    align-items: center;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
 `
 
@@ -33,9 +44,9 @@ const NavLink = styled(Link)`
   &.brand {
     display: flex;
     align-items: center;
-    font-size: 1.4rem;
-    font-family: ${fontFamily.heiti};
+    font-size: 1.5rem;
     margin-right: 3rem;
+    font-family: ${fontFamily.kaiti};
   }
 
   img {
@@ -55,8 +66,8 @@ const NavIcon = ({ src, alt, to }) => (
   </a>
 )
 
-const Header = () => (
-  <header css={headerStyle}>
+const Header = ({ home }) => (
+  <StyledHeader home={home}>
     <nav>
       <NavLink className="brand" to="/">
         <img
@@ -73,12 +84,7 @@ const Header = () => (
       <NavLink to="/author/">About</NavLink>
       <NavLink to="/contact/">Contact</NavLink>
     </nav>
-    <div
-      css={css`
-        display: flex;
-        align-items: center;
-      `}
-    >
+    <div className="icons">
       <NavIcon src={wechatIcon} alt="微信公众号" to="/" />
       <NavIcon
         src={zhihuIcon}
@@ -87,7 +93,7 @@ const Header = () => (
       />
       <NavIcon src={githubIcon} alt="github" to="https://github.com/lipd" />
     </div>
-  </header>
+  </StyledHeader>
 )
 
 export default Header

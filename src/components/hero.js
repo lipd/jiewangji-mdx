@@ -1,13 +1,14 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { graphql, useStaticQuery } from 'gatsby'
-import { fontFamily, colors } from './styles'
 import BackgroundImage from 'gatsby-background-image'
+import Header from './header'
+import { fontFamily, colors } from './styles'
 
 const ImageBackground = styled(BackgroundImage)`
   background-position: top 20% center;
   background-size: cover;
-  height: 50vh;
+  height: 60vh;
 `
 
 const TextBox = styled('div')`
@@ -19,12 +20,15 @@ const TextBox = styled('div')`
   align-items: center;
 
   h1 {
-    font-size: 3rem;
+    font-size: 4.2rem;
+    font-family: ${fontFamily.kaiti};
   }
 
   p {
-    margin-top: 0.5rem;
-    font-family: ${fontFamily.yuanti};
+    margin-top: 1rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    font-family: ${fontFamily.kaiti};
     color: ${colors.white_normal};
   }
 `
@@ -34,7 +38,7 @@ const Hero = () => {
     query {
       image: file(relativePath: { eq: "nodes.jpg" }) {
         sharp: childImageSharp {
-          fluid {
+          fluid(quality: 100) {
             ...GatsbyImageSharpFluid_withWebp
           }
         }
@@ -44,6 +48,7 @@ const Hero = () => {
 
   return (
     <ImageBackground tag="section" fluid={image.sharp.fluid} fadeIn="soft">
+      <Header home />
       <TextBox>
         <h1>结网集</h1>
         <p>我的学习足迹与一些胡思乱想</p>

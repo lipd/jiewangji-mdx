@@ -13,6 +13,7 @@ export const fontFamily = {
   yuanti: 'STYuanti-SC-Regular, YouYuan',
   heiti: "'STHeiti', MicrosoftYaHei",
   songti: 'STSongti-SC-Bold, SimSun',
+  kaiti: 'STKaiti, KaiTiGB2312',
 }
 
 export const shadow = css`

@@ -12,7 +12,7 @@ export const Col = styled('div')`
 `
 
 export const Col3 = styled(Col)`
-  @media (min-width: 480px) {
+  @media (min-width: 575px) {
     flex: 0 0 48%;
   }
   @media (min-width: 768px) {
@@ -21,7 +21,7 @@ export const Col3 = styled(Col)`
 `
 
 export const Col4 = styled(Col)`
-  @media (min-width: 480px) {
+  @media (min-width: 575px) {
     flex: 0 0 32%;
   }
   @media (min-width: 768px) {
