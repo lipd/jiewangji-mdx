@@ -20,12 +20,12 @@ const articleStyle = css`
     font-family: ${fontFamily.yuanti};
     font-size: 1rem;
     font-weight: normal;
-    margin: 1rem 0;
+    margin: 1rem 0 1.2rem;
   }
   p {
     color: ${colors.light};
-    font-size: 1rem;
-    line-height: 1.2em;
+    font-size: 0.9rem;
+    line-height: 1.35em;
   }
 `
 

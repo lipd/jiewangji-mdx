@@ -13,7 +13,12 @@ const useNaoDong = () => {
               author
               image {
                 sharp: childImageSharp {
-                  fluid {
+                  fluid(
+                    maxWidth: 472
+                    maxHeight: 368
+                    cropFocus: CENTER
+                    quality: 100
+                  ) {
                     ...GatsbyImageSharpFluid_withWebp
                   }
                 }
