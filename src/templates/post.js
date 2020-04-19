@@ -1,7 +1,7 @@
 import React from 'react'
 import Layout from '../components/layout'
 import { graphql } from 'gatsby'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
+import Post from '../components/post'
 
 export const query = graphql`
   query($slug: String!) {
@@ -9,6 +9,13 @@ export const query = graphql`
       frontmatter {
         title
         author
+        image {
+          sharp: childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
       body
     }
@@ -17,9 +24,7 @@ export const query = graphql`
 
 const PostTemplate = ({ data: { mdx: post } }) => (
   <Layout>
-    <h1>{post.frontmatter.title}</h1>
-    <p>post by {post.frontmatter.author}</p>
-    <MDXRenderer>{post.body}</MDXRenderer>
+    <Post post={post} />
   </Layout>
 )
 
