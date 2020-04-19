@@ -3,27 +3,28 @@ import { Link } from 'gatsby'
 import Image from 'gatsby-image'
 import { css } from '@emotion/core'
 import { Row, Col4 } from './grid'
-import { fontFamily, colors } from './styles'
+import { fontFamily, colors, shadow } from './styles'
 
 const articleStyle = css`
+  background-color: white;
   padding: 1rem;
-  border: 1px solid ${colors.grey};
+  box-shadow: ${shadow.light};
+  border-radius: 5px;
 
   :hover {
-    box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12),
-      0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+    box-shadow: ${shadow.dark};
     border-color: transparent;
   }
 
   h2 {
     font-family: ${fontFamily.yuanti};
-    font-size: 14px;
+    font-size: 1rem;
     font-weight: normal;
     margin: 1rem 0;
   }
   p {
     color: ${colors.light};
-    font-size: 14px;
+    font-size: 1rem;
     line-height: 1.2em;
   }
 `

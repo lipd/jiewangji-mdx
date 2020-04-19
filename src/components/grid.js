@@ -11,7 +11,7 @@ export const Col = styled('div')`
 `
 
 export const Col3 = styled(Col)`
-  padding: 10px;
+  padding: 0 10px;
   @media (min-width: 575px) {
     flex: 0 0 48%;
   }
@@ -21,7 +21,7 @@ export const Col3 = styled(Col)`
 `
 
 export const Col4 = styled(Col)`
-  padding: 10px;
+  padding: 0 8px;
   @media (min-width: 575px) {
     flex: 0 0 32%;
   }

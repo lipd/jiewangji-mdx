@@ -1,5 +1,4 @@
 import globalStyle from './global'
-import { css } from '@emotion/core'
 
 export const colors = {
   black: '#090a0b',
@@ -10,16 +9,18 @@ export const colors = {
 }
 
 export const fontFamily = {
+  default:
+    "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'",
   yuanti: 'STYuanti-SC-Regular, YouYuan',
   heiti: "'STHeiti', MicrosoftYaHei",
   songti: 'STSongti-SC-Bold, SimSun',
   kaiti: 'STKaiti, KaiTiGB2312',
 }
 
-export const shadow = css`
-  box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12),
-    0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
-`
+export const shadow = {
+  light: `0 5px 30px -15px rgba(0, 0, 0, 0.2)`,
+  dark: `0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);`,
+}
 
 const styles = {
   globalStyle,

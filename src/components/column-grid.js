@@ -6,8 +6,12 @@ import { colors, fontFamily, shadow } from './styles'
 import { Row, Col3 } from './grid'
 
 const articleStyle = css`
+  box-shadow: ${shadow.light};
+  border-radius: 5px;
+  background-color: white;
+  overflow: hidden;
   :hover {
-    ${shadow}
+    box-shadow: ${shadow.dark};
     .container {
       border-color: transparent;
     }
@@ -15,18 +19,17 @@ const articleStyle = css`
 
   .container {
     padding: 1rem;
-    border: 1px solid ${colors.grey};
     border-top: none;
   }
 
   h2 {
     font-family: ${fontFamily.yuanti};
     font-weight: normal;
-    font-size: 1rem;
+    font-size: 1.2rem;
     margin-bottom: 0.5rem;
   }
   p {
-    font-size: 0.8rem;
+    font-size: 1rem;
     color: ${colors.light};
   }
 `

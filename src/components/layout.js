@@ -20,7 +20,7 @@ const Layout = ({ children, home }) => {
       {home ? <Hero title={title} description={description} /> : <Header />}
       <main
         css={css`
-          padding: 2rem calc((100% - 1000px - 3rem) / 2);
+          padding: 2rem calc((100% - 1176px - 3rem) / 2);
           margin: 0 1.5rem;
         `}
       >
