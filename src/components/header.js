@@ -9,8 +9,8 @@ import wechatIcon from './assets/svg/wechat-white.svg'
 import zhihuIcon from './assets/svg/zhihu-white.svg'
 
 const StyledHeader = styled('header')`
-  background-color: ${(props) => (props.home ? 'transparent' : '#383545')};
-  position: ${(props) => (props.home ? 'absolute' : 'relative')};
+  position: absolute;
+  background-color: transparent;
   font-family: ${fontFamily.yuanti};
   display: flex;
   justify-content: space-between;

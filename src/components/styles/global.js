@@ -1,5 +1,4 @@
 import { css } from '@emotion/core'
-import { fontFamily } from './'
 
 const globalStyle = css`
   * {
@@ -9,9 +8,9 @@ const globalStyle = css`
 
   html,
   body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-      'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
-      'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen,
+      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Helvetica, Arial,
+      sans-serif;
     font-size: 16px;
     background-color: #f4f7f9;
   }

@@ -1,37 +1,63 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { css } from '@emotion/core'
-import Image from 'gatsby-image'
+import BackgroundImage from 'gatsby-background-image'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
-import { fontFamily } from './styles'
 
 const Article = styled('article')`
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 9px 49px -8px rgba(0, 0, 0, 0.3);
+  margin: 0 2rem;
+  @media (max-width: 575px) {
+    margin: 0 1rem;
+  }
+
   figure {
     align-items: center;
     justify-content: center;
   }
 
   .title {
-    font-family: ${fontFamily.songti};
+    padding: 0 6rem;
+    color: white;
     font-size: 2.25rem;
-    text-align: center;
-    padding: 0 4em;
     margin-bottom: 1em;
+    line-height: 1.3em;
+    font-weight: normal;
+    @media (max-width: 768px) {
+      padding: 0 2rem;
+      font-size: 1.7rem;
+    }
+    @media (max-width: 575px) {
+      padding: 0 2rem;
+      font-size: 1.6rem;
+    }
   }
 
   .post {
+    color: #4a4a4a;
+    padding: 2rem 6rem;
+    line-height: 1.8;
+    @media (max-width: 768px) {
+      padding: 0 2rem;
+    }
+    @media (max-width: 575px) {
+      padding: 0 2rem;
+    }
+
     h1,
     h2,
     h3,
     h4,
     h5,
     h6 {
-      font-family: ${fontFamily.songti};
-      margin: 1em 0 1em;
+      margin: 1.3rem 0 1.3rem;
+      font-weight: 400;
     }
 
     h1 {
-      font-size: 1.5rem;
+      font-size: 1.45rem;
     }
 
     h2 {
@@ -55,31 +81,42 @@ const Article = styled('article')`
     }
 
     p {
-      font-family: ${fontFamily.heiti};
-      color: #848484;
-      font-weight: lighter;
-      line-height: 1.38rem;
-      margin-bottom: 1rem;
+      font-weight: 400;
+      margin: 1.3rem 0;
     }
   }
 `
 
-const imageStyle = css`
-  margin: 0 auto 4rem;
-  max-height: 400px;
+const Hero = styled(BackgroundImage)`
+  height: 60vh;
+  @media (max-width: 768px) {
+    height: 50vh;
+  }
+  @media (max-width: 575px) {
+    height: 40vh;
+  }
+
+  .darken-layer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+    background-image: linear-gradient(0, #000, hsla(0, 0%, 100%, 0));
+  }
 `
 
 const Post = ({ post }) => (
   <Article>
     <header>
-      <h1 className="title">{post.frontmatter.title}</h1>
-      <figure>
-        <Image
-          css={imageStyle}
-          fluid={post.frontmatter.image.sharp.fluid}
-          fadeIn
-        />
-      </figure>
+      <Hero
+        tag="section"
+        fluid={post.frontmatter.image.sharp.fluid}
+        fadeIn="soft"
+      >
+        <div className="darken-layer">
+          <h1 className="title">{post.frontmatter.title}</h1>
+        </div>
+      </Hero>
     </header>
     <section className="post">
       <MDXRenderer>{post.body}</MDXRenderer>

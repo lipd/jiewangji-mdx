@@ -1,7 +1,6 @@
 import React from 'react'
-import { Global, css } from '@emotion/core'
+import { Global } from '@emotion/core'
 import { Helmet } from 'react-helmet'
-import Header from '../components/header'
 import Hero from '../components/hero'
 import useSiteMetadata from '../hooks/use-sitemetadata'
 import styles from '../components/styles'
@@ -17,15 +16,8 @@ const Layout = ({ children, home }) => {
         <title>{title}</title>
         <meta name="description" content={description} />
       </Helmet>
-      {home ? <Hero title={title} description={description} /> : <Header />}
-      <main
-        css={css`
-          padding: 2rem calc((100% - 1176px - 3rem) / 2);
-          margin: 0 1.5rem;
-        `}
-      >
-        {children}
-      </main>
+      {home && <Hero title={title} description={description} />}
+      {children}
     </>
   )
 }

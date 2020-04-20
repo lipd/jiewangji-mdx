@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
+import { css } from '@emotion/core'
 import Layout from '../components/layout'
 import ColumnGrid from '../components/column-grid'
 import NaodongGrid from '../components/naodong-grid'
@@ -19,10 +20,17 @@ export default () => {
 
   return (
     <Layout home>
-      <Title>专栏</Title>
-      <ColumnGrid columns={columns} />
-      <Title>脑洞</Title>
-      <NaodongGrid posts={posts} />
+      <main
+        css={css`
+          padding: 2rem calc((100% - 1176px - 3rem) / 2);
+          margin: 0 1.5rem;
+        `}
+      >
+        <Title>专栏</Title>
+        <ColumnGrid columns={columns} />
+        <Title>脑洞</Title>
+        <NaodongGrid posts={posts} />
+      </main>
     </Layout>
   )
 }
