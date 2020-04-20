@@ -52,6 +52,7 @@ const Article = styled('article')`
     h4,
     h5,
     h6 {
+      color: black;
       margin: 1.3rem 0 1.3rem;
       font-weight: 400;
     }

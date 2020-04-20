@@ -18,6 +18,7 @@ const StyledHeader = styled('header')`
   width: 100%;
   height: 64px;
   padding: 0 40px;
+  -webkit-font-smoothing: subpixel-antialiased;
 
   nav {
     display: flex;

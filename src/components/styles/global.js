@@ -13,6 +13,8 @@ const globalStyle = css`
       sans-serif;
     font-size: 16px;
     background-color: #f4f7f9;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: auto;
   }
 
   a {
