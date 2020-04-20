@@ -67,8 +67,8 @@ const NavIcon = ({ src, alt, to }) => (
   </a>
 )
 
-const Header = ({ home }) => (
-  <StyledHeader home={home}>
+const Header = () => (
+  <StyledHeader>
     <nav>
       <NavLink className="brand" to="/">
         <img
