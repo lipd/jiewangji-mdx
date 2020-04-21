@@ -23,7 +23,7 @@ const BgWrapper = styled('div')`
 const BgImage = styled(BackgroundImage)`
   width: 100%;
   filter: blur(5px) brightness(0.7);
-  transform: scale(1.02);
+  transform: scale(1.05);
   height: 70vh;
   @media (max-width: 768px) {
     height: 60vh;

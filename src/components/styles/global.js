@@ -21,6 +21,10 @@ const globalStyle = css`
     text-decoration: none;
     color: inherit;
   }
+
+  button {
+    outline: none;
+  }
 `
 
 export default globalStyle
