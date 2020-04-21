@@ -22,7 +22,6 @@ const Article = styled('article')`
     padding: 0 6rem;
     color: white;
     font-size: 2.25rem;
-    margin-bottom: 1em;
     line-height: 1.3em;
     font-weight: normal;
     @media (max-width: 768px) {
@@ -33,6 +32,14 @@ const Article = styled('article')`
       padding: 0 2rem;
       font-size: 1.6rem;
     }
+  }
+
+  .date {
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #3393dc;
+    margin: 1rem 0 1.6rem;
   }
 
   .post {
@@ -116,6 +123,7 @@ const Post = ({ post }) => (
       >
         <div className="darken-layer">
           <h1 className="title">{post.frontmatter.title}</h1>
+          <p className="date">{post.frontmatter.date}</p>
         </div>
       </Hero>
     </header>

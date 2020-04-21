@@ -3,24 +3,25 @@ import { useStaticQuery, graphql } from 'gatsby'
 const useNaoDong = () => {
   const data = useStaticQuery(graphql`
     query {
-      allFile(filter: { relativePath: { regex: "/^naodong/.+.mdx/" } }) {
+      allMdx(
+        filter: { frontmatter: { column: { eq: "naodong" } } }
+        sort: { fields: frontmatter___date, order: DESC }
+      ) {
         nodes {
-          childMdx {
-            excerpt
-            frontmatter {
-              title
-              slug
-              author
-              image {
-                sharp: childImageSharp {
-                  fluid(
-                    maxWidth: 472
-                    maxHeight: 368
-                    cropFocus: CENTER
-                    quality: 100
-                  ) {
-                    ...GatsbyImageSharpFluid_withWebp
-                  }
+          excerpt
+          frontmatter {
+            title
+            slug
+            author
+            image {
+              sharp: childImageSharp {
+                fluid(
+                  maxWidth: 472
+                  maxHeight: 368
+                  cropFocus: CENTER
+                  quality: 100
+                ) {
+                  ...GatsbyImageSharpFluid_withWebp
                 }
               }
             }
@@ -30,12 +31,12 @@ const useNaoDong = () => {
     }
   `)
 
-  return data.allFile.nodes.map((file) => ({
-    title: file.childMdx.frontmatter.title,
-    slug: file.childMdx.frontmatter.slug,
-    author: file.childMdx.frontmatter.author,
-    image: file.childMdx.frontmatter.image,
-    excerpt: file.childMdx.excerpt,
+  return data.allMdx.nodes.map((post) => ({
+    title: post.frontmatter.title,
+    slug: post.frontmatter.slug,
+    author: post.frontmatter.author,
+    image: post.frontmatter.image,
+    excerpt: post.excerpt,
   }))
 }
 
