@@ -3,15 +3,21 @@ import { css } from '@emotion/core'
 import styled from '@emotion/styled'
 import { fontFamily } from '../styles'
 import { Link } from 'gatsby'
+import Hamburger from './hamburger'
 import logo from '../assets/svg/logo.svg'
-import githubIcon from '../assets/svg/github-white.svg'
-import wechatIcon from '../assets/svg/wechat-white.svg'
-import zhihuIcon from '../assets/svg/zhihu-white.svg'
-import '../assets/css/hamburgers.css'
+import logoLight from '../assets/svg/logo-light.svg'
+import githubIcon from '../assets/svg/github.svg'
+import githubIconLight from '../assets/svg/github-light.svg'
+import wechatIcon from '../assets/svg/wechat.svg'
+import wechatIconLight from '../assets/svg/wechat-light.svg'
+import zhihuIcon from '../assets/svg/zhihu.svg'
+import zhihuIconLight from '../assets/svg/zhihu-light.svg'
 
 const StyledHeader = styled('header')`
-  position: absolute;
-  background-color: transparent;
+  -webkit-font-smoothing: subpixel-antialiased;
+  position: ${(props) => (props.absolute ? 'absolute' : 'static')};
+  background-color: ${(props) => (props.light ? 'white' : 'transparent')};
+  color: ${(props) => (props.light ? '#48434f' : 'white')};
   font-family: ${fontFamily.yuanti};
   display: flex;
   justify-content: space-between;
@@ -19,7 +25,6 @@ const StyledHeader = styled('header')`
   width: 100%;
   height: 64px;
   padding: 0 40px;
-  -webkit-font-smoothing: subpixel-antialiased;
 
   nav {
     display: flex;
@@ -38,7 +43,6 @@ const StyledHeader = styled('header')`
 `
 
 const NavLink = styled(Link)`
-  color: white;
   text-decoration: none;
   padding: 0 0.6rem;
   letter-spacing: 0.1rem;
@@ -79,20 +83,6 @@ const NavIcon = ({ src, alt, to }) => (
   </a>
 )
 
-const Hamburger = ({ toggle, setToggle }) => {
-  return (
-    <button
-      className={`hamburger hamburger--elastic ${toggle ? 'is-active' : ''}`}
-      onClick={() => setToggle(!toggle)}
-      type="button"
-    >
-      <span className="hamburger-box">
-        <span className="hamburger-inner"></span>
-      </span>
-    </button>
-  )
-}
-
 const BurgerWrapper = styled('div')`
   position: absolute;
   z-index: 999;
@@ -104,6 +94,7 @@ const BurgerWrapper = styled('div')`
 `
 
 const Menu = styled('ul')`
+  color: white;
   position: absolute;
   z-index: 998;
   right: 0;
@@ -136,11 +127,11 @@ const Menu = styled('ul')`
   }
 `
 
-const Header = () => {
+const Header = ({ absolute = false, light = false }) => {
   const [toggle, setToggle] = useState(false)
 
   return (
-    <StyledHeader>
+    <StyledHeader absolute={absolute} light={light}>
       <nav>
         <NavLink className="brand" to="/">
           <img
@@ -148,7 +139,7 @@ const Header = () => {
               height: 38px;
               width: 38px;
             `}
-            src={logo}
+            src={light ? logoLight : logo}
             alt="logo"
           />
           结网集
@@ -165,7 +156,11 @@ const Header = () => {
           <NavLink to="/contact/">Contact</NavLink>
         </div>
         <BurgerWrapper>
-          <Hamburger toggle={toggle} setToggle={setToggle} />
+          <Hamburger
+            active={toggle}
+            onClick={() => setToggle(!toggle)}
+            color={light ? '#48434f' : 'white'}
+          />
         </BurgerWrapper>
         <Menu className={`${toggle ? '' : 'close'}`}>
           <li>
@@ -199,13 +194,21 @@ const Header = () => {
         </Menu>
       </nav>
       <div className="icons">
-        <NavIcon src={wechatIcon} alt="微信公众号" to="/" />
         <NavIcon
-          src={zhihuIcon}
+          src={light ? wechatIconLight : wechatIcon}
+          alt="微信公众号"
+          to="/"
+        />
+        <NavIcon
+          src={light ? zhihuIconLight : zhihuIcon}
           alt="知乎"
           to="https://www.zhihu.com/people/albertli063"
         />
-        <NavIcon src={githubIcon} alt="github" to="https://github.com/lipd" />
+        <NavIcon
+          src={light ? githubIconLight : githubIcon}
+          alt="github"
+          to="https://github.com/lipd"
+        />
       </div>
     </StyledHeader>
   )
