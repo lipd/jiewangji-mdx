@@ -56,7 +56,7 @@ const NavLink = styled(Link)`
     display: flex;
     align-items: center;
     font-size: 1.5rem;
-    margin-right: ${(props) => (props.light ? '10rem' : '2.4rem')};
+    margin-right: ${(props) => props.margin};
     font-family: ${fontFamily.kaiti};
     font-weight: bold;
   }
@@ -135,7 +135,7 @@ const Header = ({ position = 'static', light = false }) => {
   return (
     <StyledHeader position={position} light={light}>
       <nav>
-        <NavLink className="brand" to="/" light={light}>
+        <NavLink className="brand" to="/" margin={light ? '10rem' : '2.4rem'}>
           <img
             css={css`
               height: 38px;
