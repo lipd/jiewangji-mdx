@@ -2,6 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import BackgroundImage from 'gatsby-background-image'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
+import { colors } from './styles'
 
 const Article = styled('article')`
   background-color: white;
@@ -38,7 +39,7 @@ const Article = styled('article')`
     text-align: center;
     font-size: 0.9rem;
     font-weight: bold;
-    color: #3393dc;
+    color: ${colors.fontBlue};
     margin: 1rem 0 1.6rem;
   }
 

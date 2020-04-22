@@ -12,19 +12,22 @@ import wechatIcon from '../assets/svg/wechat.svg'
 import wechatIconLight from '../assets/svg/wechat-light.svg'
 import zhihuIcon from '../assets/svg/zhihu.svg'
 import zhihuIconLight from '../assets/svg/zhihu-light.svg'
+import { colors } from '../styles'
 
 const StyledHeader = styled('header')`
   -webkit-font-smoothing: subpixel-antialiased;
-  position: ${(props) => (props.absolute ? 'absolute' : 'static')};
+  position: ${(props) => props.position};
+  top: 0;
   background-color: ${(props) => (props.light ? 'white' : 'transparent')};
-  color: ${(props) => (props.light ? '#48434f' : 'white')};
+  color: ${(props) => (props.light ? colors.fontLight : 'white')};
   font-family: ${fontFamily.yuanti};
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   height: 64px;
-  padding: 0 40px;
+  padding: 0 ${(props) => (props.light ? '1.5rem' : '20px')};
+  border-bottom: ${(props) => (props.light ? '1px solid #f0f0f2' : 'none')};
 
   nav {
     display: flex;
@@ -53,7 +56,7 @@ const NavLink = styled(Link)`
     display: flex;
     align-items: center;
     font-size: 1.5rem;
-    margin-right: 2.4rem;
+    margin-right: ${(props) => (props.light ? '10rem' : '2.4rem')};
     font-family: ${fontFamily.kaiti};
     font-weight: bold;
   }
@@ -111,7 +114,6 @@ const Menu = styled('ul')`
 
   &.close {
     display: none;
-    background-color: red;
   }
 
   li {
@@ -127,13 +129,13 @@ const Menu = styled('ul')`
   }
 `
 
-const Header = ({ absolute = false, light = false }) => {
+const Header = ({ position = 'static', light = false }) => {
   const [toggle, setToggle] = useState(false)
 
   return (
-    <StyledHeader absolute={absolute} light={light}>
+    <StyledHeader position={position} light={light}>
       <nav>
-        <NavLink className="brand" to="/">
+        <NavLink className="brand" to="/" light={light}>
           <img
             css={css`
               height: 38px;
@@ -159,7 +161,7 @@ const Header = ({ absolute = false, light = false }) => {
           <Hamburger
             active={toggle}
             onClick={() => setToggle(!toggle)}
-            color={light ? '#48434f' : 'white'}
+            color={light ? colors.fontLight : 'white'}
           />
         </BurgerWrapper>
         <Menu className={`${toggle ? '' : 'close'}`}>

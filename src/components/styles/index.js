@@ -6,6 +6,9 @@ export const colors = {
   grey: '#f0f0f0',
   white_normal: '#cfd0d0',
   white_bright: '#ffffff',
+  fontLight: '#48434f',
+  fontLightMuted: '#78757a',
+  fontBlue: '#3393dc',
 }
 
 export const fontFamily = {

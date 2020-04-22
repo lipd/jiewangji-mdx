@@ -48,7 +48,7 @@ const Hero = () => {
 
   return (
     <ImageBackground tag="section" fluid={image.sharp.fluid} fadeIn="soft">
-      <Header absolute />
+      <Header position="absolute" />
       <TextBox>
         <h1>结网集</h1>
         <p>我的学习足迹与一些胡思乱想</p>

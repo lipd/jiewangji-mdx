@@ -37,7 +37,7 @@ const articleStyle = css`
 
 const ColumnPreview = ({ column }) => (
   <article css={articleStyle}>
-    <Link to={`/${column.slug}/`}>
+    <Link to={`/column/${column.slug}/intro/`}>
       <Image fluid={column.image} fadeIn />
       <div className="container">
         <h2>{column.title}</h2>

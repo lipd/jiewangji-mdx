@@ -90,7 +90,7 @@ const PostTemplate = ({ data: { mdx: post } }) => (
         fadeIn
       />
     </BgWrapper>
-    <Header absolute />
+    <Header position="absolute" />
     <Main>
       <PostWrapper>
         <Post post={post} />

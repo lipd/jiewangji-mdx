@@ -1,39 +1,39 @@
 exports.createPages = async ({ actions, graphql, reporter }) => {
-  // create columns
-  const columnsQuery = await graphql(`
+  // create posts of columns
+  const columnPostsQuery = await graphql(`
     query {
-      allDataJson {
+      allMdx(filter: { frontmatter: { column: { ne: "naodong" } } }) {
         nodes {
-          title
-          slug
-          intro
+          frontmatter {
+            column
+            slug
+          }
         }
       }
     }
   `)
 
-  if (columnsQuery.errors) {
-    reporter.panic('fail to create columns', columnsQuery.errors)
+  if (columnPostsQuery.errors) {
+    reporter.panic('fail to create posts of columns', columnPostsQuery.errors)
   }
 
-  const columns = columnsQuery.data.allDataJson.nodes
+  const columnPosts = columnPostsQuery.data.allMdx.nodes
 
-  columns.forEach((column) => {
+  columnPosts.forEach((post) => {
     actions.createPage({
-      path: `${column.slug}`,
+      path: `/column/${post.frontmatter.column}/${post.frontmatter.slug}`,
       component: require.resolve('./src/templates/column.js'),
       context: {
-        title: `${column.title}`,
-        slug: `${column.slug}`,
-        intro: `${column.intro}`,
+        column: `${post.frontmatter.column}`,
+        slug: `${post.frontmatter.slug}`,
       },
     })
   })
 
-  // create all posts
+  // create all naodongs
   const postQuery = await graphql(`
     query {
-      allMdx {
+      allMdx(filter: { frontmatter: { column: { eq: "naodong" } } }) {
         nodes {
           frontmatter {
             slug

@@ -1,0 +1,144 @@
+---
+column: gatsby-blog
+title: 基础框架搭建
+slug: basic-framework
+author: 李佩道
+date: 2020-04-21
+---
+
+## 一、创建 github 仓库
+
+在 .gitignore 中选择 node 项目，可以帮助我们节省许多时间
+
+```bash
+git clone https://github.com/lipd/serverless-gatsby-blog.git
+```
+
+## 二、进行开发环境配置
+
+使用 yarn init 初始化 package.json，之后进行依赖安装：
+
+```bash
+yarn add react react-dom gatsby
+yarn add prettier --dev
+```
+
+配置 package.json 文件
+
+```json
+// package.json
+
+{
+  "name": "serverless-gatsby-blog",
+  "version": "0.1.0",
+  "description": "a gatsby blog with tencent serverless",
+  "repository": "git@github.com:lipd/serverless-gatsby-blog.git",
+  "author": "lipd <lipeidao@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "GATSBY_GRAPHQL_IDE=playground gatsby develop",
+    "format": "prettier --write src/**/*.{js,jsx}",
+    "start": "npm run develop"
+  },
+  "dependencies": {
+    "gatsby": "^2.20.14",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "prettier": "^2.0.4"
+  }
+}
+```
+
+配置 .prettierrc 文件
+
+```json
+// .prettierrc
+
+{
+  "semi": true,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "all"
+}
+```
+
+将 .gitignore 中的 pulic 前面的注释取消掉
+
+```bash
+# Comment in the public line in if your project uses Gatsby and *not* Next.js
+# https://nextjs.org/blog/next-9-1#public-directory-support
+public
+```
+
+## 三、创建你的第一个页面
+
+gatsby 会将 `src/pages` 页面下的文件转换为页面，所以我们在该目录下创建一个名为 `index.js`的文件，Gatsby 会将其作为网站主页。
+
+```js
+// src/pages/index.js
+
+import React from 'react'
+
+export default () => (
+  <>
+    <h1>Hello World!</h1>
+  </>
+)
+```
+
+我们运行一下 npm start 命令，可以看到网站可以正常运行了。
+
+## 四、部署网站
+
+首先你需要确保本地安装了 Serverless Framework 命令行工具，没有的话可以用下面的命令进行安装：
+
+```bash
+npm i -g serverless
+```
+
+之后我们就可以创建配置 serverless 的 serverless.yml 文件了
+
+```yml
+# serverless.yml
+
+gatsbyBlog:
+  component: '@serverless/tencent-website'
+  inputs:
+    code:
+      src: ./public # Gatsby 生成的目录
+      index: index.html
+      error: index.html
+    region: ap-beijing # 选择你希望部署的地区
+    bucketName: my-bucket-gatsby-blog
+```
+
+我们先执行 npm run build 让 Gatsby 生成静态网页，接着执行 sls --debug 进行部署：
+
+部署成功后，我们会看到博客的地址，现在就可以把它放入浏览器去访问了。通过 Serverless Framework 来部署网站，其便利程度不亚于使用 Netlift。
+
+当然，为了方面以后更新，我们可以在 `package.json` 中增加一个命令。
+
+```json
+// package.json
+
+"scripts": {
+	"deploy": "gatsby build && sls --debug"
+}
+```
+
+## 附录
+
+如果你没有跟上的话可以切换到 step0 这个分支：
+
+```bash
+git checkout step0
+```
+
+参考资料：
+
+- [Hexo + Serverless Framework，简单三步搭建你的个人博客](<https://china.serverless.com/best-practice/2019-12-4-Quickly-build-personal-blog](https://china.serverless.com/best-practice/2019-12-4-Quickly-build-personal-blog)>)
+- [FrontEndMaster：Introduction to Gatsby](https://frontendmasters.com/courses/gatsby/)
