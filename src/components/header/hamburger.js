@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 
-const Button = styled('button')`
+const Span = styled('span')`
   /*
  * Hamburgers
  * @description Tasty CSS-animated hamburgers
@@ -9,7 +9,7 @@ const Button = styled('button')`
  * @site https://jonsuh.com/hamburgers
  * @link https://github.com/jonsuh/hamburgers
  */
-  &.hamburger {
+  .hamburger {
     padding: 0px 0px;
     display: inline-block;
     cursor: pointer;
@@ -24,15 +24,15 @@ const Button = styled('button')`
     margin: 0;
     overflow: visible;
   }
-  &.hamburger:hover {
+  .hamburger:hover {
     opacity: 0.7;
   }
-  &.hamburger.is-active:hover {
+  .hamburger.is-active:hover {
     opacity: 0.7;
   }
-  &.hamburger.is-active .hamburger-inner,
-  &.hamburger.is-active .hamburger-inner::before,
-  &.hamburger.is-active .hamburger-inner::after {
+  .hamburger.is-active .hamburger-inner,
+  .hamburger.is-active .hamburger-inner::before,
+  .hamburger.is-active .hamburger-inner::after {
     background-color: ${(props) => props.color};
   }
 
@@ -104,16 +104,17 @@ const Button = styled('button')`
 
 const Hamburger = ({ onClick, active, color = 'white' }) => {
   return (
-    <Button
-      className={`hamburger hamburger--elastic ${active ? 'is-active' : ''}`}
-      onClick={onClick}
-      type="button"
-      color={active ? 'white' : color}
-    >
-      <span className="hamburger-box">
-        <span className="hamburger-inner"></span>
-      </span>
-    </Button>
+    <Span color={active ? 'white' : color}>
+      <button
+        className={`hamburger hamburger--elastic ${active ? 'is-active' : ''}`}
+        onClick={onClick}
+        type="button"
+      >
+        <span className="hamburger-box">
+          <span className="hamburger-inner"></span>
+        </span>
+      </button>
+    </Span>
   )
 }
 
