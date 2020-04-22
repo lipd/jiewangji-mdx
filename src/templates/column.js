@@ -44,6 +44,10 @@ const Menu = styled('nav')`
   border-right: 1px solid #f0f0f2;
   overflow-y: auto;
 
+  @media (max-width: 768px) {
+    display: none;
+  }
+
   h1 {
     padding: 1.5rem 2rem 1.5rem 1.5rem;
     color: ${colors.fontLightMuted};
@@ -89,14 +93,24 @@ const MenuList = ({ posts }) => (
 )
 
 const Main = styled('main')`
-  flex: 1;
   min-height: calc(100vh - 64px);
 `
 
 const Article = styled('div')`
-  margin: 3rem auto 0 3rem;
-  max-width: 42rem;
+  margin: 0 3rem;
+  padding-top: 2rem;
+  max-width: 50rem;
   line-height: 1.5rem;
+  @media (max-width: 768px) {
+    margin: 0 2rem;
+  }
+  @media (max-width: 575px) {
+    margin: 0 1.5rem;
+  }
+
+  h1.title {
+    margin-top: 0;
+  }
 
   h1,
   h2,
@@ -116,6 +130,10 @@ const Article = styled('div')`
     font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
       'Courier New', monospace;
     font-size: 0.85rem;
+    overflow: auto;
+  }
+  code {
+    overflow: auto;
   }
 
   h1 {
@@ -155,13 +173,15 @@ const PostTemplate = ({
     <div
       css={css`
         margin: 64px 0 0 18rem;
-        display: flex;
+        @media (max-width: 768px) {
+          margin-left: 0;
+        }
         flex: 1;
       `}
     >
       <Main>
         <Article>
-          <h1>{post.frontmatter.title}</h1>
+          <h1 className="title">{post.frontmatter.title}</h1>
           <MDXRenderer>{post.body}</MDXRenderer>
         </Article>
       </Main>
