@@ -200,7 +200,7 @@ const Header = ({ position = 'static', light = false, doc = false }) => {
         <NavIcon
           src={light ? wechatIconLight : wechatIcon}
           alt="微信公众号"
-          to="/"
+          to="/qrcode.jpg"
         />
         <NavIcon
           src={light ? zhihuIconLight : zhihuIcon}
