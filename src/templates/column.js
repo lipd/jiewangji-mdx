@@ -4,6 +4,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { css } from '@emotion/core'
 import styled from '@emotion/styled'
 import Layout from '../components/layout'
+import Footer from '../components/footer'
 import Header from '../components/header'
 import { fontFamily, colors } from '../components/styles'
 
@@ -94,11 +95,14 @@ const MenuList = ({ posts }) => (
 
 const Main = styled('main')`
   min-height: calc(100vh - 64px);
+  display: flex;
+  flex-direction: column;
 `
 
 const Article = styled('div')`
+  flex: 1;
   margin: 0 3rem;
-  padding-top: 2rem;
+  padding: 2rem 0 3rem;
   max-width: 50rem;
   line-height: 1.5rem;
   @media (max-width: 768px) {
@@ -184,6 +188,7 @@ const PostTemplate = ({
           <h1 className="title">{post.frontmatter.title}</h1>
           <MDXRenderer>{post.body}</MDXRenderer>
         </Article>
+        <Footer light />
       </Main>
     </div>
   </Layout>

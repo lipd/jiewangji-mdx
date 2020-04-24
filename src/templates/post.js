@@ -4,6 +4,7 @@ import Layout from '../components/layout'
 import { graphql } from 'gatsby'
 import BackgroundImage from 'gatsby-background-image'
 import Header from '../components/header'
+import Footer from '../components/footer'
 import Post from '../components/post'
 
 const BgWrapper = styled('div')`
@@ -96,6 +97,7 @@ const PostTemplate = ({ data: { mdx: post } }) => (
         <Post post={post} />
       </PostWrapper>
       <Base />
+      <Footer />
     </Main>
   </Layout>
 )
