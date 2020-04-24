@@ -169,7 +169,7 @@ const PostTemplate = ({
   },
 }) => (
   <Layout light>
-    <Header light position="fixed" />
+    <Header light doc position="fixed" />
     <Menu>
       <h1>{columnTitle}</h1>
       <MenuList posts={posts} />

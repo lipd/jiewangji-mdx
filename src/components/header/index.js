@@ -54,6 +54,7 @@ const NavLink = styled(Link)`
 
   &.brand {
     display: flex;
+    padding-left: 0;
     align-items: center;
     font-size: 1.5rem;
     margin-right: ${(props) => props.margin};
@@ -129,13 +130,13 @@ const Menu = styled('ul')`
   }
 `
 
-const Header = ({ position = 'static', light = false }) => {
+const Header = ({ position = 'static', light = false, doc = false }) => {
   const [toggle, setToggle] = useState(false)
 
   return (
     <StyledHeader position={position} light={light}>
       <nav>
-        <NavLink className="brand" to="/" margin={light ? '10rem' : '2.4rem'}>
+        <NavLink className="brand" to="/" margin={doc ? '10.7rem' : '2.4rem'}>
           <img
             css={css`
               height: 38px;
@@ -154,7 +155,7 @@ const Header = ({ position = 'static', light = false }) => {
           `}
         >
           <NavLink to="/">Home</NavLink>
-          <NavLink to="/author/">About</NavLink>
+          <NavLink to="/about/">About</NavLink>
           <NavLink to="/contact/">Contact</NavLink>
         </div>
         <BurgerWrapper>

@@ -2,7 +2,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   // create posts of columns
   const columnPostsQuery = await graphql(`
     query {
-      allMdx(filter: { frontmatter: { column: { ne: "naodong" } } }) {
+      allMdx(
+        filter: { frontmatter: { column: { nin: ["other", "naodong"] } } }
+      ) {
         nodes {
           frontmatter {
             column
