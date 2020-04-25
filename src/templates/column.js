@@ -1,11 +1,13 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
+import { MDXProvider } from '@mdx-js/react'
 import { css } from '@emotion/core'
 import styled from '@emotion/styled'
 import Layout from '../components/layout'
 import Footer from '../components/footer'
 import Header from '../components/header'
+import Code from '../components/code'
 import { fontFamily, colors } from '../components/styles'
 
 export const query = graphql`
@@ -136,6 +138,7 @@ const Article = styled('div')`
     font-size: 0.85rem;
     overflow: auto;
   }
+
   code {
     overflow: auto;
   }
@@ -186,7 +189,9 @@ const PostTemplate = ({
       <Main>
         <Article>
           <h1 className="title">{post.frontmatter.title}</h1>
-          <MDXRenderer>{post.body}</MDXRenderer>
+          <MDXProvider components={{ pre: Code }}>
+            <MDXRenderer>{post.body}</MDXRenderer>
+          </MDXProvider>
         </Article>
         <Footer light />
       </Main>
