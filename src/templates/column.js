@@ -133,13 +133,7 @@ const Article = styled('div')`
     background-color: #f5f5f5;
     border-radius: 5px;
     padding: 1.5rem;
-    font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
-      'Courier New', monospace;
     font-size: 0.85rem;
-    overflow: auto;
-  }
-
-  code {
     overflow: auto;
   }
 
