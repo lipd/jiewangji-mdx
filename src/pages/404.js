@@ -5,7 +5,7 @@ import Normal from '../components/normal'
 export default () => {
   const data = useStaticQuery(graphql`
     query {
-      mdx(frontmatter: { column: { eq: "other" }, slug: { eq: "about" } }) {
+      mdx(frontmatter: { column: { eq: "other" }, slug: { eq: "404" } }) {
         body
       }
     }

@@ -1,4 +1,5 @@
 import globalStyle from './global'
+import typography from './typography'
 
 export const colors = {
   black: '#090a0b',
@@ -29,6 +30,7 @@ const styles = {
   globalStyle,
   colors,
   fontFamily,
+  typography,
 }
 
 export default styles
