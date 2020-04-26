@@ -52,6 +52,10 @@ const NavLink = styled(Link)`
   font-size: 1.1rem;
   font-weight: normal;
 
+  &:hover {
+    opacity: 80%;
+  }
+
   &.brand {
     display: flex;
     padding-left: 0;
@@ -70,6 +74,10 @@ const NavLink = styled(Link)`
 const Icon = styled('img')`
   height: 32px;
   width: 32px;
+
+  &:hover {
+    opacity: 80%;
+  }
 `
 
 const NavIcon = ({ src, alt, to }) => (
