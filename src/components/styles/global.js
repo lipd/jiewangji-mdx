@@ -14,7 +14,7 @@ const globalStyle = css`
     font-size: 16px;
     background-color: #f4f7f9;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: auto;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   a {
