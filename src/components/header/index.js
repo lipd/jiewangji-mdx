@@ -17,6 +17,7 @@ import { colors } from '../styles'
 const StyledHeader = styled('header')`
   -webkit-font-smoothing: subpixel-antialiased;
   position: ${(props) => props.position};
+  z-index: 100;
   top: 0;
   background-color: ${(props) => (props.light ? 'white' : 'transparent')};
   color: ${(props) => (props.light ? colors.fontLight : 'white')};
