@@ -16,14 +16,20 @@ git clone https://github.com/lipd/serverless-gatsby-blog.git
 
 ## 二、进行开发环境配置
 
-使用 yarn init 初始化 package.json，之后进行依赖安装：
+使用 yarn 初始化 package.json 文件
+
+```bash
+yarn init
+```
+
+生成 package.json 文件之后，我们进行基本的依赖安装：
 
 ```bash
 yarn add react react-dom gatsby
 yarn add prettier --dev
 ```
 
-配置 package.json 文件
+编写 package.json 的脚本命令
 
 ```json
 // package.json
@@ -36,12 +42,6 @@ yarn add prettier --dev
   "author": "lipd <lipeidao@gmail.com>",
   "license": "MIT",
   "private": true,
-  "scripts": {
-    "build": "gatsby build",
-    "develop": "GATSBY_GRAPHQL_IDE=playground gatsby develop",
-    "format": "prettier --write src/**/*.{js,jsx}",
-    "start": "npm run develop"
-  },
   "dependencies": {
     "gatsby": "^2.20.14",
     "react": "^16.13.1",
@@ -49,17 +49,23 @@ yarn add prettier --dev
   },
   "devDependencies": {
     "prettier": "^2.0.4"
+  },
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "GATSBY_GRAPHQL_IDE=playground gatsby develop",
+    "format": "prettier --write src/**/*.{js,jsx}",
+    "start": "npm run develop"
   }
 }
 ```
 
-配置 .prettierrc 文件
+由于我们的项目使用了 prettier 来进行基本的格式约束，所以我们还需要配置 .prettierrc 文件
 
 ```json
 // .prettierrc
 
 {
-  "semi": true,
+  "semi": false,
   "singleQuote": true,
   "tabWidth": 2,
   "trailingComma": "all"
@@ -92,9 +98,13 @@ export default () => (
 
 我们运行一下 npm start 命令，可以看到网站可以正常运行了。
 
-## 四、部署网站
+![hello world](./images/hello-world.png)
 
-首先你需要确保本地安装了 Serverless Framework 命令行工具，没有的话可以用下面的命令进行安装：
+## 四、部署网站（可选）
+
+你没有看错，由于 Gatsby 可以作为静态网站生成器，我们此时就可以将这个还十分粗陋的项目部署在云端了。如果你现在还不想部署这个项目，也可以安心地跳过这一步，我们会在最后一章专门来讲解部署相关的问题。
+
+这里我们选择使用腾讯云的 serverless 功能进行部署，这可能是目前最方便的将静态网站方式部署到国内公共云上的方式。首先你需要注册一个腾讯云账号，并且安装 Serverless Framework 命令行工具：
 
 ```bash
 npm i -g serverless
@@ -113,14 +123,16 @@ gatsbyBlog:
       index: index.html
       error: index.html
     region: ap-beijing # 选择你希望部署的地区
-    bucketName: my-bucket-gatsby-blog
+    bucketName: my-bucket-gatsby-blog-demo # 这个名称可以修改
 ```
 
-我们先执行 npm run build 让 Gatsby 生成静态网页，接着执行 sls --debug 进行部署：
+我们先执行 `npm run build` 让 Gatsby 生成静态网页，接着执行 `sls --debug` 进行部署。这里我们选择了扫描二维码的方式进行部署（如果你想手动配置环境变量可以阅读参考资料第一篇文章的“账号配置”一节）：
 
-部署成功后，我们会看到博客的地址，现在就可以把它放入浏览器去访问了。通过 Serverless Framework 来部署网站，其便利程度不亚于使用 Netlift。
+![successful deployment](./images/deploy.png)
 
-当然，为了方面以后更新，我们可以在 `package.json` 中增加一个命令。
+部署成功后，我们会看到博客的地址（上图 url 中的内容），我们现在就可以使用任何一台设备的浏览器去访问我们的项目了。我个人觉得通过 Serverless Framework 来部署网站，其便利程度不亚于使用 Gatsby 官方推荐的 Netlify。
+
+当然，为了方面以后更新，我们可以在 `package.json` 中增加一个命令，之后我们一旦更新项目就可以使用 `yarn deploy` 命令进行部署。
 
 ```json
 // package.json
@@ -132,7 +144,7 @@ gatsbyBlog:
 
 ## 附录
 
-如果你没有跟上的话可以切换到 step0 这个分支：
+如果你最后没有跟上的话进度的话，可以切换到 step0 分支，将你的代码与我保持同步：
 
 ```bash
 git checkout step0
@@ -140,5 +152,5 @@ git checkout step0
 
 参考资料：
 
-- [Hexo + Serverless Framework，简单三步搭建你的个人博客](<https://china.serverless.com/best-practice/2019-12-4-Quickly-build-personal-blog](https://china.serverless.com/best-practice/2019-12-4-Quickly-build-personal-blog)>)
+- [Hexo + Serverless Framework，简单三步搭建你的个人博客](https://serverlesscloud.cn/best-practice/2019-12-4-Quickly-build-personal-blog)
 - [FrontEndMaster：Introduction to Gatsby](https://frontendmasters.com/courses/gatsby/)
