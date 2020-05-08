@@ -128,15 +128,6 @@ const Article = styled('div')`
     margin: 0 0 1.5rem;
   }
 
-  pre {
-    margin-bottom: 1.5rem;
-    background-color: #f5f5f5;
-    border-radius: 5px;
-    padding: 1.5rem;
-    font-size: 0.85rem;
-    overflow: auto;
-  }
-
   h1 {
     font-size: 2rem;
   }
@@ -155,6 +146,19 @@ const Article = styled('div')`
 
   h5 {
     font-size: 1.1rem;
+  }
+
+  pre {
+    margin-bottom: 1.5rem;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    padding: 1.5rem;
+    font-size: 0.85rem;
+    overflow: auto;
+  }
+
+  a {
+    color: ${colors.fontBlue};
   }
 `
 
