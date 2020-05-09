@@ -75,6 +75,8 @@ yarn add prettier --dev
 将 .gitignore 中的 pulic 前面的注释取消掉
 
 ```bash
+# .gitignore
+
 # Comment in the public line in if your project uses Gatsby and *not* Next.js
 # https://nextjs.org/blog/next-9-1#public-directory-support
 public
@@ -130,7 +132,17 @@ gatsbyBlog:
 
 ![successful deployment](./images/deploy.png)
 
-部署成功后，我们会看到博客的地址（上图 url 中的内容），我们现在就可以使用任何一台设备的浏览器去访问我们的项目了。我个人觉得通过 Serverless Framework 来部署网站，其便利程度不亚于使用 Gatsby 官方推荐的 Netlify。
+部署成功后，我们会看到博客的地址（上图 url 中的内容），我们现在就可以使用任何一台设备的浏览器去访问我们的项目了。作者个人觉得通过 Serverless Framework 来部署网站，其便利程度不亚于使用 Gatsby 官方推荐的 Netlify。
+
+需要注意的是，当我们通过二维码完成部署工作之后，serverless framework 会生成一个 .env_temp 文件, 里面会记录有 secret id 和 app id 等敏感信息，我们要避免将其上传到源码中，此时需要在 .gitignore 中将其忽略，这里我直接将 .env-temp 文件添加到 .serverless 下方：
+
+```bash
+# .gitignore
+
+# Serverless directories
+.serverless/
+.env_temp
+```
 
 当然，为了方面以后更新，我们可以在 `package.json` 中增加一个命令，之后我们一旦更新项目就可以使用 `yarn deploy` 命令进行部署。
 
@@ -144,13 +156,8 @@ gatsbyBlog:
 
 ## 附录
 
-如果你最后没有跟上的话进度的话，可以切换到 step0 分支，将你的代码与我保持同步：
+如果你最后没有跟上的话进度的话，可以切换到 step-0 分支，将你的代码与我保持同步：
 
 ```bash
-git checkout step0
+git checkout step-0
 ```
-
-参考资料：
-
-- [Hexo + Serverless Framework，简单三步搭建你的个人博客](https://serverlesscloud.cn/best-practice/2019-12-4-Quickly-build-personal-blog)
-- [FrontEndMaster：Introduction to Gatsby](https://frontendmasters.com/courses/gatsby/)
