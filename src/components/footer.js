@@ -39,7 +39,9 @@ export default ({ light }) => (
         © COPYRIGHT 2020 · Made With <Icon src={heartIcon} alt="heart" /> by
         Lipd
       </p>
-      <p>备案号：12345678</p>
+      <p>
+        <a href="http://beian.miit.gov.cn">备案号：蜀ICP备20013417</a>
+      </p>
     </div>
   </Footer>
 )
