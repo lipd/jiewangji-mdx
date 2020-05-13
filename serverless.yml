@@ -7,3 +7,11 @@ gatsbyBlog:
       error: index.html
     region: ap-beijing # 选择你希望部署的地区
     bucketName: my-bucket-gatsby-blog
+    protocol: https
+    hosts:
+      - host: www.jiewangji.com # 希望配置的自定义域名
+        https:
+          certId: dCo3OorO # SSL 证书 ID
+          http2: off
+          httpsType: 4
+          forceSwitch: -2
